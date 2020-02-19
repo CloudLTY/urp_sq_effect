@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "Assets\\Effect"
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"**/*.meta": true
+		}
+	}
+}
