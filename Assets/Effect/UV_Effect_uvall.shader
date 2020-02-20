@@ -50,12 +50,18 @@ Shader "VFX/UV_Effect_uvall"
 		ZWrite [_DepthMode]
 		ZTest LEqual
 		
-		
+		Tags 
+		{            
+			"IgnoreProjector"="True"
+			"Queue"="Transparent"
+			"RenderType"="Transparent"
+        }
 		
 		Pass
 		{
 			Name "Unlit"
-			Tags { "LightMode"="ForwardBase" }
+
+
 			CGPROGRAM
 
 			
