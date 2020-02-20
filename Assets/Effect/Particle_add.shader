@@ -19,10 +19,8 @@ Shader "VFX/add" {
             "RenderType"="Transparent"
         }
         Pass {
-            Name "FORWARD"
-            Tags {
-                "LightMode"="ForwardBase"
-            }
+            Name "ForwardLit"
+
             Blend One One
             Cull Off
             ZWrite Off
@@ -59,8 +57,7 @@ Shader "VFX/add" {
             float4 frag(VertexOutput i, float facing : VFACE) : COLOR {
                 float isFrontFace = ( facing >= 0 ? 1 : 0 );
                 float faceSign = ( facing >= 0 ? 1 : -1 );
-////// Lighting:
-////// Emissive:
+
                 float4 node_6409 = _Time;
                 float2 node_514 = (i.uv0+(float2(_MainPannerX,_MainPannerY)*node_6409.g));
                 float4 _MainTex_var = tex2D(_MainTex,TRANSFORM_TEX(node_514, _MainTex));
@@ -71,6 +68,7 @@ Shader "VFX/add" {
             ENDCG
         }
     }
-    FallBack "Diffuse"
-    CustomEditor "ShaderForgeMaterialInspector"
+    // FallBack "Universal Render Pipeline/Particles/Lit"
+    // FallBack "Diffuse"
+    // CustomEditor "ShaderForgeMaterialInspector"
 }
