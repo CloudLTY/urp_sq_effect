@@ -27,10 +27,7 @@ Shader "VFX/Particle_BaseBland" {
             "RenderType"="Transparent"
         }
         Pass {
-            Name "FORWARD"
-            Tags {
-                "LightMode"="ForwardBase"
-            }
+            Name "ForwardLit"
 
 			Stencil
 			{
@@ -87,7 +84,5 @@ Shader "VFX/Particle_BaseBland" {
             ENDCG
         }
     }
-	FallBack "SDG-Rendering/Fall_Back"//FallBack Off//FallBack "Diffuse"
-
+	// FallBack "SDG-Rendering/Fall_Back"//FallBack Off//FallBack "Diffuse"
 }
-
