@@ -14,6 +14,7 @@ Shader "VFX/add" {
     }
     SubShader {
         Tags {
+            "RenderPipeline"="UniversalPipeline"
             "IgnoreProjector"="True"
             "Queue"="Transparent"
             "RenderType"="Transparent"

@@ -11,17 +11,16 @@ Shader "VFX/Ref" {
     }
     SubShader {
         Tags {
+            "RenderPipeline"="UniversalPipeline"
             "IgnoreProjector"="True"
             "Queue"="Transparent"
             "RenderType"="Transparent"
         }
         LOD 100
-        GrabPass{ }
+        // GrabPass{ }
         Pass {
-            Name "FORWARD"
-            Tags {
-                "LightMode"="ForwardBase"
-            }
+            Name "ForwardLit"
+
             Blend SrcAlpha OneMinusSrcAlpha
             ZWrite Off
 
@@ -31,7 +30,7 @@ Shader "VFX/Ref" {
             #include "UnityCG.cginc"
             #pragma multi_compile_fwdbase
             #pragma target 3.0
-            uniform sampler2D _GrabTexture;
+            uniform sampler2D _CameraOpaqueTexture;
             uniform sampler2D _MainColor; uniform float4 _MainColor_ST;
             uniform float _Power;
             struct VertexInput {
@@ -57,7 +56,7 @@ Shader "VFX/Ref" {
             float4 frag(VertexOutput i) : COLOR {
                 float4 _MainColor_var = tex2D(_MainColor,TRANSFORM_TEX(i.uv0, _MainColor));
                 float2 sceneUVs = (i.projPos.xy / i.projPos.w) + (float2(_MainColor_var.r,_MainColor_var.g)*_MainColor_var.a*_Power*i.vertexColor.a);
-                float4 sceneColor = tex2D(_GrabTexture, sceneUVs);
+                float4 sceneColor = tex2D(_CameraOpaqueTexture, sceneUVs);
 ////// Lighting:
                 float3 finalColor = 0;
                 return fixed4(lerp(sceneColor.rgb, finalColor,0.0),1);
@@ -65,6 +64,6 @@ Shader "VFX/Ref" {
             ENDCG
         }
     }
-    FallBack "Diffuse"
-    CustomEditor "ShaderForgeMaterialInspector"
+    // FallBack "Diffuse"
+    // CustomEditor "ShaderForgeMaterialInspector"
 }
