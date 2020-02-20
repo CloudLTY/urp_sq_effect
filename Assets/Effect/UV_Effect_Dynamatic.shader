@@ -22,10 +22,7 @@ Shader "VFX/UV_effect_Dynamatic" {
             "RenderType"="Transparent"
         }
         Pass {
-            Name "FORWARD"
-            Tags {
-                "LightMode"="ForwardBase"
-            }
+            Name "ForwardLit"
             Blend SrcAlpha OneMinusSrcAlpha
             Cull Off
 			ZWrite Off
@@ -83,6 +80,6 @@ Shader "VFX/UV_effect_Dynamatic" {
             ENDCG
         }
     }
-			FallBack "SDG-Rendering/Fall_Back"//FallBack Off//FallBack "Diffuse"
-    CustomEditor "ShaderForgeMaterialInspector"
+			// FallBack "SDG-Rendering/Fall_Back"//FallBack Off//FallBack "Diffuse"
+    // CustomEditor "ShaderForgeMaterialInspector"
 }
