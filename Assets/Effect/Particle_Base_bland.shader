@@ -1,4 +1,4 @@
-Shader "VFX/Particle_BaseBland" {
+Shader "gf_shader/vfx/particle_basebland" {
     Properties {
     
         _MainTex ("Main Tex", 2D) = "white" {}
